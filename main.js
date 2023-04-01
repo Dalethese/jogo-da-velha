@@ -140,7 +140,7 @@ function game(clickArea) {
 
       playerTitle.textContent = player1.value
 
-      checkWinner()
+      checkWinner(clickArea)
       checkDraw()
       return
     }

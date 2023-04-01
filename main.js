@@ -56,7 +56,6 @@ function findO(line) {
 }
 
 function checkWinner(clickArea) {
-  let final = false
 
   // check X
   let TopEquals = findX(topLine),
@@ -79,17 +78,17 @@ function checkWinner(clickArea) {
     rightColumnEquals === 3
   ) {
     playerTitle.textContent = `Vitória de ${player1.value}`
-    return (final = true)
+    return
   }
 
-  ;(TopEquals = findO(topLine)),
-    (middleEquals = findO(middleLine)),
-    (bottomEquals = findO(bottomLine)),
-    (leftDiagonalEquals = findO(leftDiagonal)),
-    (rightDiagonalEquals = findO(rightDiagonal)),
-    (leftColumnEquals = findO(leftColumn)),
-    (middleColumnEquals = findO(middleColumn)),
-    (rightColumnEquals = findO(rightColumn))
+    TopEquals = findO(topLine),
+    middleEquals = findO(middleLine),
+    bottomEquals = findO(bottomLine),
+    leftDiagonalEquals = findO(leftDiagonal),
+    rightDiagonalEquals = findO(rightDiagonal),
+    leftColumnEquals = findO(leftColumn),
+    middleColumnEquals = findO(middleColumn),
+    rightColumnEquals = findO(rightColumn)
 
   if (
     TopEquals === 3 ||
@@ -102,13 +101,15 @@ function checkWinner(clickArea) {
     rightColumnEquals === 3
   ) {
     playerTitle.textContent = `Vitória de ${player2.value}`
-    return (final = true)
+    return
   }
+
+   checkDraw()
 }
 
 function checkDraw() {
-  for (let i = 0; i < clickAreas.length; i++) {
-    if (clickAreas[i].childElementCount != 0) velha++
+  for (area of clickAreas) {
+    if (area.childElementCount != 0) velha++
   }
 
   if (velha === 45) {
@@ -131,7 +132,6 @@ function game(clickArea) {
       playerTitle.textContent = player2.value
 
       checkWinner(clickArea)
-      checkDraw()
 
       return
     }
@@ -141,7 +141,6 @@ function game(clickArea) {
       playerTitle.textContent = player1.value
 
       checkWinner(clickArea)
-      checkDraw()
       return
     }
   }

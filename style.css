@@ -13,8 +13,11 @@
 }
 
 body {
+  height: 100vh;
   font-size: 1.6rem;
   font-family: 'Outfit', sans-serif;
+  display: grid;
+  place-content: center;
 }
 
 button
